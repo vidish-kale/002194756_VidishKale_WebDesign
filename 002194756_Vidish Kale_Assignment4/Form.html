@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+	
+ <head>
+	<link rel="stylesheet" href="style.css">
+  <title>Feedback</title>
+  <style>
+    label {	float: left;
+			width: 150px;}
+      #container{
+          width: 700px;
+          margin: auto;
+          background-color: beige;
+      } 
+      main{
+          padding: 50px;
+	  }
+	  table{
+		  display: none;
+		  border: 1px solid black;
+	} 
+	 
+		
+	
+  </style>
+ </head>
+ <body>
+ <div id="container">
+	 
+	 <main>
+	 <h2>Feedback</h2>
+	 <h3>Love something? Hate something? Let us know!</h3>
+		 Note : Fields marked with an asterisk(*) are mandatory
+		 <br><br>
+		 <form method="post" id = "myForm">
+			<label>Title*:</label>
+			<input type="radio" name="title" id="miss" value="miss" required="required"/>Miss
+			<input type="radio" name="title" id="mr" value="mr" required="required"/>Mr.
+			<input type="radio" name="title" id="mrs" value="mrs" required="required"/>Mrs.
+			<br><br>
+			<label for="firstName">First Name*:</label>
+			<input type="text" name="firstName" id="firstName" placeholder="First Name" required/>	
+			<br><br>
+
+			<div id="error_firstName" style="display: none; color: red;">
+					Invalid input for the Firstname field.
+					<br><br>
+				</div>
+			
+			<label for="lastName">Last Name*:</label>
+			<input type="text" name="lastName" id="lastName" placeholder="Last Name" required/>
+			<br><br>
+			<div id="error_lastName" style="display: none; color: red;">
+					Invalid input for the Last Name field.
+					<br><br>
+				</div>
+			
+
+			<label for="emailId">Email Id*:</label>
+			<input type="text" name="emailId" id="emailId" placeholder="yourname@northeastern.edu" required/>
+			<br><br>
+			<div id="error_emailId" style="display: none; color: red;">
+					Invalid input for the Email Id field. Please enter valid email id.
+					<br><br>
+			</div>
+			<label for="phoneNumber">Phone Number*:</label>
+			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" required/>
+			<br><br>
+			<div id="error_phoneNumber" style="display: none; color: red;">
+					Invalid input for the Phone Number field. Please enter valid phone number.
+					<br><br>
+				</div>
+			<label for="streetAddress1">Street Address 1*:</label>
+			<input type="text" name="streetAddress1" id="streetAddress1" placeholder="address" required/>
+			<br><br>
+			
+			<label for="streetAddress2">Street Address 2:</label>
+			<input type="text" name="streetAddress2" id="streetAddress2" placeholder="address" />
+			<br><br>
+
+			<label for="city">City*:</label>
+			<input type="text" name="city" id="city" placeholder="city" required/>
+			<br><br>
+
+			<label for="state">State*:</label>
+			<input type="text" name="state" id="state" placeholder="state" required/>
+			<br><br>
+			
+            <label for="zipcode">ZipCode*:</label>
+			<input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" required/>
+			<br><br>
+			<div id="error_zipcode" style="display: none; color: red;">
+					Invalid input for the Zipcode field. Only 5 digit is allowed.
+					<br><br>
+				</div>
+
+			<label>Drinks:</label>
+			<select name="Name_of_list_box" size="Number_of_options" id = "optionSelect">
+				<option>select</option>
+				<option>Espresso Coffee</option>
+				<option>Herbal Tea</option>
+				<option>Hot Chocolate</option>
+				<option>Soft Drinks</option>
+				<option>Fruit Juice</option>
+			</select>
+				<br /><br />
+
+			<!-- <label>size :</label>
+			<input type="checkbox"  -->
+			<div id="dynamicRadio" style="display: none">
+				<label>Select Type*</label>
+				<input type="radio" id="radioDynamic" name="rdsource" value="yelp"/><span id="spanTag">Yelp</span>
+				<input type="radio" id="radioDynamic1" name="rdsource" value="gulp"/><span id="spanTag1">Yelp</span>
+				<input type="radio" id="radioDynamic1" name="rdsource" value="gulp"/><span id="spanTag2">Yelp</span>
+				<br /><br />
+			</div>
+			<div id="fieldtext" style="display: none">
+				<label>Reviews*</label>
+				<input type="text" id="fldtxt" name="text" placeholder="Write something" required/><br /><br />
+			</div>
+			
+            <label for="zipcode">How did you hear*:</label>
+			<input type='checkbox' name="source" value="facebook" /> Facebook
+            <input type='checkbox' name="source" value="google" /> Google
+            <input type='checkbox' name="source" value="yelp" /> Yelp 
+			<br><br> 
+             
+			<label for="comments">Comments*:</label>
+			<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25" required></textarea>
+			<br><br>
+			<input type="Submit">
+			<input type="Reset">
+			<br><br>
+		 </form>
+	 </main>
+	</div>
+	 <div>
+		<table id="table" >
+			<tr>
+				<th>Title</th>
+				<th>First name</th>
+				<th>Last Name</th>
+				<th>Email ID</th>
+				<th>Phone Number</th>
+				<th>Street Address 1</th>
+				<th>Street Address 2</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Zipcode</th>
+				<th>Comments</th>
+				<th>Reviews</th>
+			</tr>
+		</table>
+	 </div>
+ 
+
+ <script>
+
+	 var form = document.getElementById("myForm");
+        form.addEventListener("submit", submitted);
+		var validFirstName = false;
+		var validLastName = false;
+        var validEmailId = false;
+		var validPhoneNumber = false;
+		var validZipCode = false;
+    
+        var regExName = /^[a-zA-Z]+$/;
+		
+		var regExEmail = /([\w\.]+)@(northeastern+)\.(edu)/;
+	
+		var regExPhone = /\d{3}-?\d{3}-\d{4}$/;
+		var regExZipCode =  /^\d{5}$/;
+
+        var firstName = document.getElementById("firstName");
+		firstName.addEventListener("input", validate);
+
+		var lastName = document.getElementById("lastName");
+        lastName.addEventListener("input", validate);
+
+        var emailId = document.getElementById("emailId");
+        emailId.addEventListener("input", validate);
+
+        var phoneNumber = document.getElementById("phoneNumber");
+		phoneNumber.addEventListener("input", validate);
+
+		var zipcode = document.getElementById("zipcode");
+        zipcode.addEventListener("input", validate);
+
+
+        function validate(e) 
+		{
+            console.log("validate");
+            var value = e.target.value;
+            console.log(value);
+            var type = this.id;
+            var em = "error_" + type;
+            switch (type)
+			 {
+				case "firstName":
+                    if (!value.trim().match(regExName)) {    
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validFirstName = false;
+                    }
+                    else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validFirstName = true;
+                    }
+					break;
+					
+				case "lastName":
+                    if (!value.trim().match(regExName)) {
+                        document.getElementById(em).style.display = "block";
+                        this.style.border = "2px solid red";
+                        validLastName = false;
+                    }
+                    else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validLastName = true;
+                    }
+                    break;
+
+                case "emailId":
+                    if (!value.trim().match(regExEmail)) {
+                        document.getElementById(em).style.display = "block";
+                        validEmailId = false;
+                    }
+                    else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validEmailId = true;
+                    }
+                    break;
+                case "phoneNumber":
+                    if (!value.trim().match(regExPhone)) {
+                        document.getElementById(em).style.display = "block";
+                        validPhoneNumber = false;
+                    }
+                    else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validPhoneNumber = true;
+                    }
+					break;
+					
+					case "zipcode":
+                    if (!value.trim().match(regExZipCode)) {
+                        document.getElementById(em).style.display = "block";
+                        validZipCode = false;
+                    }
+                    else {
+                        document.getElementById(em).style.display = "none";
+                        this.style.border = "";
+                        validZipCode = true;
+                    }
+                    break;
+            }
+		}
+		
+
+		function addRadio(e) 
+		{
+        console.log(e.target.value);
+        var selected = e.target.value;
+		var dynamicRadio = document.getElementById("dynamicRadio");
+		var dynamicText = document.getElementById("fieldtext");
+		console.log(radioDynamic.innerHTML);
+		if(selected === "select"){
+			dynamicText.style.display = "none";
+		}
+        if (selected === "Espresso Coffee") {
+          dynamicRadio.style.display = "block";
+		  radioDynamic.value = "Espresso Coffee $4";
+		  radioDynamic1.value = "Espresso Coffee $7";
+		  document.getElementById("spanTag").innerHTML = "Small Size: $3";
+		  document.getElementById("spanTag1").innerHTML = "Regular Size: $6";
+		  document.getElementById("spanTag2").innerHTML = "Large Size: $9";
+        } else if (selected === "Herbal Tea") {
+          dynamicRadio.style.display = "block";
+		  radioDynamic.value = "Herbal Tea $1";
+		  radioDynamic1.value = "Herbal Tea $2";
+		  document.getElementById("spanTag").innerHTML = "Small Size: $2";
+		  document.getElementById("spanTag1").innerHTML = "Regular Size: $5";
+		  document.getElementById("spanTag2").innerHTML = "Large Size: $8";
+		  
+        } else if (selected === "Hot Chocolate") {
+          dynamicRadio.style.display = "block";
+		  radioDynamic.value = "Hot Chocolate $5";
+		  radioDynamic1.value = "Hot Chocolate $6";
+		  document.getElementById("spanTag").innerHTML = "Small Size: $15";
+		  document.getElementById("spanTag1").innerHTML = "Regular Size: $30";
+		  document.getElementById("spanTag2").innerHTML = "Large Size: $45";
+        } else if (selected === "Soft Drinks") {
+          dynamicRadio.style.display = "block";
+		  radioDynamic.value = " Soft Drinks $15";
+		  radioDynamic1.value = "Soft Drinks $16";
+		  document.getElementById("spanTag").innerHTML = "Small Size: $25";
+		  document.getElementById("spanTag1").innerHTML = "Regular Size: $50";
+		  document.getElementById("spanTag2").innerHTML = "Big Size: $75";
+        } else if (selected === "Fruit Juice") {
+          dynamicRadio.style.display = "block";
+		  radioDynamic.value = "Fruit Juice $20";
+		  radioDynamic1.value = "Fruit Juice $21";
+		  document.getElementById("spanTag").innerHTML = "Small Size: $20";
+		  document.getElementById("spanTag1").innerHTML = "Regular Size: $30";
+		  document.getElementById("spanTag2").innerHTML = "Large Size: $40";
+        } else {
+          dynamicRadio.style.display = "none";
+        }
+        console.log(radioDynamic.value);
+      }
+			
+		function addTextField(e) {
+			console.log(e);
+			var selected = e.target.checked;
+			var textarea = document.getElementById("fieldtext");
+			var listbox = document.getElementById("optionSelect");
+			
+			if (selected) {
+				textarea.style.display = "block";
+			} else {
+			  textarea.style.display = "none";
+			}
+		}
+		var optionSelect = document.getElementById("optionSelect");
+     	optionSelect.addEventListener("change", addRadio);
+
+		  var radioSelect = document.getElementById("radioDynamic");
+		  var radioSelect1 = document.getElementById("radioDynamic1");
+		  radioSelect.addEventListener("change", addTextField);
+		  radioSelect1.addEventListener("change", addTextField);
+
+
+
+        function submitted(e) {
+            			
+			e.preventDefault();
+                console.log("submitted");
+                console.log(validFirstName + "|" + validLastName + "|" + validEmailId + "|" + validPhoneNumber + "|" + validZipCode );
+                if(validFirstName && validLastName && validEmailId && validPhoneNumber && validZipCode) {
+                    alert("Data Saved Successfully");
+                }
+                else {
+                    alert("Please enter valid details");
+                }
+				document.getElementById("table").style.display="block";
+                
+            var table = document.getElementById("table");
+            var row = table.insertRow(-1);
+            var title = row.insertCell(0);
+            var firstName = row.insertCell(1);
+            var lastName = row.insertCell(2);
+			var emailId =row.insertCell(3);
+			var phoneNumber = row.insertCell(4);
+			var address1 =row.insertCell(5);
+			var address2 = row.insertCell(6);
+			var city = row.insertCell(7);
+			var state = row.insertCell(8);
+			var zipcode = row.insertCell(9);
+			
+			
+			var comments = row.insertCell(10);
+			var fldcom = row.insertCell(11);
+
+
+			title.innerHTML = document.querySelector('input[name="title"]:checked').value;
+
+            firstName.innerHTML = document.getElementById("firstName").value;
+            lastName.innerHTML = document.getElementById("lastName").value;
+            emailId.innerHTML = document.getElementById("emailId").value;
+
+            phoneNumber.innerHTML = document.getElementById("phoneNumber").value;
+            address1.innerHTML = document.getElementById("streetAddress1").value;
+            address2.innerHTML = document.getElementById("streetAddress2").value;
+				 
+
+            city.innerHTML = document.getElementById("city").value;
+            state.innerHTML = document.getElementById("state").value;
+            zipcode.innerHTML = document.getElementById("zipcode").value;
+		
+			comments.innerHTML = document.getElementById("comments").value;
+			
+			fldcom.innerHTML = document.getElementById("fldtxt").value;
+			
+
+        	form.reset();
+                
+
+    }
+ 
+ </script>
+
+ </body>
+</html>
