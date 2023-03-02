@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: rgb(103, 97, 97);">
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <h3 class="mb-0">Handy Calculator</h3>
+                            </div>
+                            <div class="card-body">
+                                <form name="form" id="form">
+                                    <div class="form-group">
+                                        <label for="emailid">Email Id : </label>
+                                        <input class="form-control" type="email" id="emailid"
+                                            placeholder="Enter your Email Id">
+                                        <span class="error">Please Enter a valid email id</span>
+                                        <span class="error" id="invalidemail">Email-id is invalid</span>
+                                    </div>
+                                    <div class="form-group mt-3 ">
+                                        <label for="username">Username</label>
+                                        <input class="form-control" type="text" id="username"
+                                            placeholder="Enter your Username" name="username">
+                                        <span class="error">Please enter a valid username</span>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="password">Password</label>
+                                        <input autocomplete="new-password" type="password" class="form-control"
+                                            placeholder="Enter your Password" id="password">
+                                        <span class="error">Please enter your password</span>
+                                        <span class="error" id="invalidpassword">
+                                            Password must contain atleast one uppercase, lowercase, digit and a special
+                                            character & (length > 8).
+                                        </span>
+                                    </div>
+                                    <input type="submit" id="submit" class="btn btn-dark btn-block px-3 mt-3"
+                                        value="Login" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+
+
+    
+    <script>
+        // Document is ready
+        $(document).ready(function () {
+
+            $("form").submit(e => false)
+
+
+            $('.error').hide();
+            $("#submit").click(function () {
+
+                var mail = $("#emailid").val();
+                var uname = $("#username").val();
+                var pass = $("#password").val();
+
+
+                if (mail.length < 1) {
+                    $("#emailid").next().show();
+                    return false;
+                }
+                if (uname.length < 1) {
+                    $("#username").next().show();
+                    return false;
+                }
+                if (IsEmail(mail) == false) {
+                    $('#invalidemail').show();
+                    return false;
+                }
+                if (pass.length < 1) {
+                    $("#password").next().show();
+                    return false;
+                }
+                if (IsPassword(pass) == false) {
+                    $('#invalidpassword').show();
+                    return false;
+                }
+                else {
+                    document.location.href = './calculator.html?userName=' + uname;
+
+                    alert("Logged In successfully");
+                    return true;
+                }
+
+            })
+        })
+
+
+        function IsEmail(emailid) {
+            var regex = /[a-z0-9]+@northeastern.edu/;
+            if (!regex.test(emailid)) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        function IsPassword(password) {
+            var regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%&*]).{8,}$/;
+            if (!regex.test(password)) {
+                return false;
+            }
+            else
+             {
+                return true;
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

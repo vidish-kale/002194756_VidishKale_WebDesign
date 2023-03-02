@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Desktop Application</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+</head>
+
+<body style="background-color: rgb(91, 89, 89);">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light " style="color: aquamarine;" >
+        <div class="d-flex flex-grow-1" >
+            <a class="navbar-brand mx-3" href="index.html"> Calculator Desktop Application </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ms-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="#" class="nav-link m-2 menu-item text-white nav-active" id="logo">
+                        <input type="button" value="" id="name" />
+
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3 class="mb-0">Calculator Desktop Application</h3>
+                                </div>
+                                <div class="card-body calculator">
+                                    <form id="form">
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-auto">
+                                                <label for="input1" class="col-form-label">Enter number 1 : </label>
+                                            </div>
+                                            <div class="col-auto">
+                                                <input type="text" id="input1" class="form-control px-4" required>
+                                            </div>
+                                            <p id="error-message"></p>
+                                        </div>
+
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-auto">
+                                                <label for="input2" class="col-form-label">Enter number 2 : </label>
+                                            </div>
+                                            <div class="col-auto">
+                                                <input type="text" id="input2" class="form-control px-4" required>
+                                            </div>
+                                            <p id="error-message1"></p>
+                                        </div>
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-auto">
+                                                <label for="input2" class="col-form-label">Result :</label>
+                                            </div>
+                                            <div class="col-auto mx-5 px-4">
+                                                <input id="result" class="form-control px-4" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mt-5 text-center">
+                                            <input type="button" class="btn btn-secondary px-3 mx-0" id="btnAdd"
+                                                value="Addition" onclick="Operations('add')" />
+                                            <input type="button" class="btn btn-secondary px-3 mx-1" id="btnSub"
+                                                value="Subtraction" onclick="Operations('sub')" />
+                                            <input type="button" class="btn btn-secondary px-3 mx-1" id="btnMul"
+                                                value="Multiplication" onclick="Operations('mul')" />
+                                            <input type="button" class="btn btn-secondary px-3 mx-1" id="btnDiv"
+                                                value="Division" onclick="Operations('div')" />
+
+                                            <input type="reset" class="btn btn-secondary px-3 mx-1" id="reset"
+                                                value="Reset" />
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        let paramString = document.URL.split('?')[1];
+        let queryString = new URLSearchParams(paramString);
+        for (let pair of queryString.entries()) {
+            var x = pair[1];
+            document.getElementById('name').value = x;
+            console.log(document.getElementById('name').value);
+        }
+
+        function Operations(operands) {
+
+
+            var firstNumber = parseInt($('#input1').val());
+            var secondNumber = parseInt($('#input2').val());
+
+            let message = "Please Enter Numbers Only";
+
+            if (!$.isNumeric(firstNumber)) {
+                $("#error-message").text(message);
+                return false;
+            }
+            else {
+                $("#error-message").text("");
+            }
+            if (!$.isNumeric(secondNumber)) {
+                $("#error-message1").text(message);
+                return false;
+            }
+
+            if (operands == 'div' && secondNumber == 0) {
+                $("#error-message1").text("Can't divide by 0");
+                return false;
+            }
+            else {
+                $("#error-message1").text("");
+            }
+
+
+            var result = 0;
+
+            switch (operands) {
+
+                case 'add': result = ((x, y) => { return x + y; })(firstNumber, secondNumber);
+                    break;
+
+                case 'sub': result = ((x, y) => { return x - y; })(firstNumber, secondNumber);
+                    break;
+
+                case 'mul': result = ((x, y) => { return x * y; })(firstNumber, secondNumber);
+                    break;
+
+                case 'div': result = ((x, y) => { return x / y; })(firstNumber, secondNumber);
+                    break;
+            }
+
+            $("#result").val(result);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

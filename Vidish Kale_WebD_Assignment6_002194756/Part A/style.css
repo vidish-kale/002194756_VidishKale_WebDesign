@@ -1,0 +1,43 @@
+body{
+   
+
+}
+
+
+.card{
+    border: 0;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    padding: 30px 20px;
+    margin-top: 150px;
+   
+}
+.card-header{
+    background-color: lightblue !important;
+    border-bottom: 0 !important;
+}
+.form-control{
+    margin-top: 8px;
+
+}
+.form-control:focus{
+    box-shadow: none !important;
+}
+.error{
+    color: red;
+}
+i{
+    font-style: normal;
+}
+#demo{
+    margin: 0px;
+    color: #04305d;
+    background-color: #337ca9;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding:8px 90px;
+    margin-left:8px ;
+}
+#error-message ,#error-message1{
+    color: red;
+    padding-left: 150px;
+}

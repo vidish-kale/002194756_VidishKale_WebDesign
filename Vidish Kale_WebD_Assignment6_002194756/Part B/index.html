@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stopwatch</title>
+
+	<link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+
+	<div class="stopwatch">
+		<div class="time">
+			00:00:00
+		</div>
+		<div class="controls">
+			<button id="start">Start</button>
+			<button id="stop">Stop</button>
+			<button id="reset">Reset</button>
+		</div>
+	</div>
+
+	<script>
+
+		const time = document.querySelector(".stopwatch .time");
+		const strtbtn = document.getElementById("start");
+		const stpbtn = document.getElementById("stop");
+		const rstbtn = document.getElementById("reset");
+
+		let sec = 0;
+		let interval = null;
+
+
+		strtbtn.addEventListener("click", start);
+		stpbtn.addEventListener("click", stop);
+		rstbtn.addEventListener("click", reset);
+
+
+		function timer() {
+			sec++;
+
+			let hrs = Math.floor(sec / 3600);
+			let mins = Math.floor((sec - hrs * 3600) / 60);
+			let secs = sec % 60;
+
+			if (secs < 10) secs = "0" + secs;
+			if (mins < 10) mins = "0" + mins;
+			if (hrs < 10) hrs = "0" + hrs;
+
+			time.innerText = `${hrs}:${mins}:${secs}`;
+		}
+
+		async function start() {
+			if (interval) {
+				return;
+			}
+
+			interval = setInterval(timer, 1000);
+			await new Promise((resolve) => setTimeout(resolve, 1000));
+		}
+
+		async function stop() {
+			clearInterval(interval);
+			interval = null;
+			await new Promise((resolve) => setTimeout(resolve, 1000));
+		}
+
+		function reset() {
+			stop();
+			sec = 0;
+			time.innerText = "00:00:00";
+		}
+
+	</script>
+</body>
+
+</html>
