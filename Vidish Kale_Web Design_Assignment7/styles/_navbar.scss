@@ -1,0 +1,27 @@
+.navbar {
+  padding: 1rem;
+  border-bottom: 1px solid #2d2e36;
+  @extend %align-between;
+  &_header {
+    font-weight: 600;
+    color: #fff;
+    &:hover {
+      cursor: pointer;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+  &_button {
+    background-color: $primary_2;
+    color: #fff;
+    padding: 0.3rem 1rem;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

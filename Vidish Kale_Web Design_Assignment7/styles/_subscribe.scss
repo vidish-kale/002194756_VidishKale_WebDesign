@@ -1,0 +1,68 @@
+.subscribe {
+  padding: 1rem;
+  margin: 4rem auto;
+  max-width: 80vw;
+  color: white;
+  border-radius: 20px;
+  height: 150px;
+
+  position: relative;
+  background-color: $primary_3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media screen and (max-width: 768px) {
+    justify-content: start;
+    height: 200px;
+  }
+  &_header {
+    font-weight: 500;
+    color: #fff;
+  }
+  &_form {
+    align-self: flex-end;
+    padding: 0 5rem;
+
+    @media screen and (max-width: 768px) {
+      align-self: center;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    &_input {
+      background-color: $background;
+      color: #fff;
+      padding: 0.5rem 3rem;
+      border-radius: 10px;
+      border: none;
+      margin: 0 1rem;
+      outline: none;
+      @media screen and (max-width: 768px) {
+        width: 70%;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &_button {
+      background-color: $primary_2;
+      color: #fff;
+      padding: 0.3rem 1rem;
+      border-radius: 10px;
+      border: none;
+      margin-left: -40px;
+      @media screen and (max-width: 768px) {
+        margin-left: 0;
+        width: 100%;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

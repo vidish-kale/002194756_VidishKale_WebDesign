@@ -1,0 +1,37 @@
+$primary_1: #a2b9bc;
+$background: #24252d;
+$primary_2: #32baf5;
+$primary_3: #2a2d3a;
+$bubbleColor: rgba(255, 255, 255, 0.2);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Qwitcher+Grypen:wght@400;700&display=swap");
+@import "navbar";
+@import "hero";
+@import "container";
+@import "footer";
+@import "subscribe";
+@import "login";
+%align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%align-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+%align-center-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: $background;
+}

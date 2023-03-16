@@ -1,0 +1,58 @@
+$color: lightblue;
+.main-container {
+  @extend %align-center-column;
+  width: 100vw;
+  height: 70vh;
+}
+.login-container {
+  background-color: $primary_3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 50%;
+  @media screen and (max-width: 768px) {
+    width: 70%;
+  }
+  @extend %align-center-column;
+  &_header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #{$color};
+   /* color: #fff;  */
+  }
+}
+.login-container-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 50%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+  &_input {
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: $background;
+    border: 1px solid transparent;
+    ::placeholder { color: #6c6a6a; }
+    &:focus {
+      border: 1px solid $primary_2;
+    }
+
+  }
+  &_button {
+    background-color: $primary_2;
+    color: #fff;
+    padding: 0.3rem 1rem;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
