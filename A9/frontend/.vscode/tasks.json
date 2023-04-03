@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"problemMatcher": [],
+			"label": "start",
+			"command": "npm start"
+		}
+	],
+	"options": {
+		"env": {
+			"PORT": "3001"
+		}
+	}
+}
