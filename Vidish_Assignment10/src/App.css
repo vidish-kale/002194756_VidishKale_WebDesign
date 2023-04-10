@@ -1,0 +1,297 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+html,
+body,
+#root {
+  font: 0.9rem sans-serif;
+  
+  color: #1e2432;
+  height: 100%;
+  margin: 0;
+
+  text-align: center;
+  background-image: url(./images/1.gif);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.main-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.418)), url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fbriery.tumblr.com%2Fpost%2F691206903728078848%2Fa-microburst-is-a-localized-column-of-sinking-air&psig=AOvVaw21h9xsAaU-nBaqKSYWqAxO&ust=1681174162742000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLjDxfeLnv4CFQAAAAAdAAAAABAE');
+  background-size: cover;
+  background-position: center;
+}
+
+.main-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search {
+  outline: none;
+  padding: 20px 7%;
+  border-radius: 20px;
+  border: none;
+  margin-bottom: 5%;
+  background: rgba(250, 250, 250, 0.85);
+}
+
+.city {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 40px 8%;
+  border-radius: 20px;
+  background: rgba(250, 250, 250, 0.85);
+  box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
+}
+
+p {
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.city-temp {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #1e2432;
+  text-align: center;
+}
+
+.city sup {
+  font-size: 0.5em;
+}
+
+.city-name {
+  font-size: 2em;
+}
+
+.city-name sup {
+  padding: 0.2em 0.6em;
+  margin-left: 0.2em;
+  border-radius: 30px;
+  color: #fff;
+  background: #ff8c00;
+}
+
+.city-icon {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .search {
+    padding: 20px 15%;
+  }
+
+  .city {
+    padding: 40px 20%;
+  }
+}
+
+.leftbg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 62vh;
+}
+
+.SearchBarChilds {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.weather {
+  margin: 0px 15px;
+  padding: 20px 80px;
+  transition: all 0.3s ease 0s;
+  box-shadow: rgb(0 0 0 / 30%) 0px 1px 4px, rgb(128 128 128 / 10%) 0px 0px 40px inset;
+}
+
+
+.card {
+  position: relative;
+  padding: 10px;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #c68368;
+  background-clip: content-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: 18px;
+  cursor: pointer;
+  width: 80%;
+  box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
+  }
+
+.header-title {
+  color: white;
+  text-align: center;
+  /* padding-left   : 20px; */
+  font-size: 40px;
+}
+
+.dailycard {
+  width: 1000px;
+  /* width: 100%; */
+  height: 200px;
+  position: relative;
+  margin: 20px 20px;
+  flex-direction: column;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: 8px;
+  padding: 10px 15px;
+  text-align: center;
+  box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
+}
+
+.dailyWeatherContainer {
+  flex-wrap: wrap;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.rightbg {
+
+  width: 1200px;
+  height: 100vh;
+}
+
+.text-white {
+  color: white;
+}
+
+sup {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.submitButton {
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  padding: 6px 16px;
+  margin: 10px;
+  min-width: 64px;
+  color: #fff;
+  background-color: #0b66af;
+  border: 0px;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  font-size: 14px;
+}
+
+.degreeHead {
+  font-size: 45px;
+  position: relative;
+  margin: 0px;
+  padding: 0px 10px;
+}
+
+.supDegree {
+  font-size: 24px;
+  font-weight: normal;
+  position: absolute;
+}
+
+.detailsHead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.removeMargin {
+  margin: 0px;
+}
+
+.widthSpacing {
+  padding: 20px;
+  width: 90%;
+  position: relative;
+  margin: auto;
+}
+
+.speed {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  left: 20px;
+  top: 3px;
+  font-size: 13px;
+  line-height: 16px;
+  color: #463c3c;
+}
+
+.currentTemp {
+  display: flex;
+  background-color: rgb(0, 165, 255);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
+}
